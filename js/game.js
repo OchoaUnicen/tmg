@@ -34,8 +34,6 @@ function cargar_game_js() {
     }
     const mapa = crearMatriz(100, 50);
 
-
-
     //imagen del fondo
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
@@ -53,25 +51,18 @@ function cargar_game_js() {
 
     //----------------------------------------------------------------------------------------------------------------
 
-
-
+//**********************************************************************************************/    
     canvas.onmousemove = function (e) {
         console.log(getMousePos(canvas, e));
-
-
-
-
     }
-
+//**********************************************************************************************/
 
 
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
         console.log("clicked");
-        console.log(mousePos.x + ',' + mousePos.y);     
-
-        
+        console.log(mousePos.x + ',' + mousePos.y);         
     }, false);
     
     //Get Mouse Position
@@ -82,28 +73,15 @@ function cargar_game_js() {
             y: evt.clientY - rect.top
         };
     }
-
-
-
     //-------
 
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
     function tiempo() {
         frame(tiempo);
-      
-        
-
-
         //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
         //dibuja el fondo 
         context.clearRect(0, 0, canvas.width, canvas.heigh);
-        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
-
-
-
-
-
-        
+        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);  
 
     }
     tiempo();
