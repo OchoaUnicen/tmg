@@ -83,6 +83,19 @@ function cargar_game_js() {
         context.clearRect(0, 0, canvas.width, canvas.heigh);
         context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);  
 
+
+        //context.drawImage(Spawner.imagen, Spawner.posicion_x, Spawner.posicion_y, Spawner.imagen.naturalWidth, Spawner.imagen.naturalHeight);
+        
+        
+        
+        dibujarSpawner(context);
+        dibujarEstanteriaSimple(context);
+        dibujarEstanteriaDoble(context);
+        dibujarVentanilla(context);
+        dibujarInterfaz(context);
+
+
+
     }
     tiempo();
 
