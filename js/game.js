@@ -86,6 +86,8 @@ function cargar_game_js() {
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
     let cooldown = 0;
     let contador = 0;
+
+    // let Cliente_1 = new Cliente();
     function tiempo() {
         frame(tiempo);
         //******************************************************************************************/
@@ -128,6 +130,11 @@ function cargar_game_js() {
 
         //crafter.js
         dibujarCrafter(context);
+
+
+
+        //cliente.js
+        // Cliente_1.dibujarCliente(context);
 
 
 //ACA
