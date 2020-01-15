@@ -135,6 +135,7 @@ function cargar_game_js() {
 
         //cliente.js
         // Cliente_1.dibujarCliente(context);
+        dibujarCliente("cliente_1", context);
 
 
 //ACA

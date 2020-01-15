@@ -6,58 +6,79 @@ let Clientes = {
 
     "cliente_1": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y  
+      },
     "cliente_2": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y    
     },
     "cliente_3": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y   
+     },
     "cliente_4": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y   
+     },
     "cliente_5": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y   
+     },
     "cliente_6": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y   
+     },
     "cliente_7": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
-    },
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y": Spawner.posicion_y   
+     },
     "cliente_8": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y":Spawner.posicion_y
     },
     "cliente_9": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y":Spawner.posicion_y
     },
     "cliente_10": {
         "imagen": imagen_cliente ,
-        "posicion_x": Ventanilla.posicion_x ,
-        "posicion_y":   Ventanilla.posicion_y,
+        "posicion_x": Spawner.posicion_x ,
+        "posicion_y":Spawner.posicion_y
     }
 
 
 
+
+
+
+
 }
+
+
+function dibujarCliente(cliente, context){
+
+    switch(cliente) {
+
+        case "cliente_1":
+        context.drawImage(Clientes.cliente_1.imagen, Clientes.cliente_1.posicion_x, Clientes.cliente_1.posicion_y, Clientes.cliente_1.imagen.naturalWidth, Clientes.cliente_1.imagen.naturalHeight);
+
+    }
+    
+}
+
+
+
+
+
 
 
 
