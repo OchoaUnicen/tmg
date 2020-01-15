@@ -29,13 +29,16 @@ function dibujarSpawner(context){
 function getRespawnTime() {
 
 
-    
-
-
+    let maximo_timer = 10;
+    let minimo_timer = 1;
+    let timer_respawn = Math.floor(Math.random() * (maximo_timer - minimo_timer) + minimo_timer); 
 
     //Math random que de tiempos de entre 10 a 25 segundos
     //donde spawnCliente() se ejecuta
-    return "sape";
+    return timer_respawn;
 }
+
+
+
 
 

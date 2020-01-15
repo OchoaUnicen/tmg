@@ -75,9 +75,31 @@ function cargar_game_js() {
     }
     //-------
 
+    
+
+    
+
+
+    
+
+
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
+    let cooldown = 0;
+    let contador = 0;
     function tiempo() {
         frame(tiempo);
+        //******************************************************************************************/
+        //console.log(cooldown);
+        cooldown = cooldown +1;
+
+        if(cooldown == 60) {
+            cooldown = 0;
+            contador = contador +1;
+            console.log(contador);
+        }
+
+        //******************************************************************************************/
+
         //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
         //dibuja el fondo 
         context.clearRect(0, 0, canvas.width, canvas.heigh);
@@ -94,6 +116,30 @@ function cargar_game_js() {
         dibujarVentanilla(context);
         dibujarInterfaz(context);
 
+
+
+        //crafting.js
+        dibujarCraftingRojo(context);
+        dibujarCraftingAmarillo(context);
+        dibujarCraftingAzul(context);
+
+
+
+
+        //crafter.js
+        dibujarCrafter(context);
+
+
+//ACA
+        
+        //console.log(getRespawnTime());
+
+
+
+
+        //despues de dibujar se spawnea el cliente en un if
+
+        // spawnearCliente();
 
 
     }

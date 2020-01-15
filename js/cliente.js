@@ -5,7 +5,18 @@ class Cliente {
 
         this.nombre = "Cliente",        
         this.posicion_x = this.getPosicion_x(),
-        this.posicion_y =  this.getPosicion_y()
+        this.posicion_y =  this.getPosicion_y(),
+        this.imagen = this.getImagen()
+
+    }
+
+
+    getImagen(){
+
+        var imagen_cliente = new Image();
+        imagen_cliente.src = "./img/cliente.png";
+
+        return imagen_cliente;
 
     }
 
@@ -23,6 +34,12 @@ class Cliente {
     }
 
 
+    dibujarCliente(context) {
+
+        context.drawImage(this.imagen, this.posicion_x, this.posicion_y, this.imagen.naturalWidth, this.imagen.naturalHeight);
+
+
+    }
 
 
 
@@ -43,8 +60,6 @@ class Cliente {
         let minimo = 0;
         let cantidad = Math.floor(Math.random() * (maximo - minimo) + minimo); 
     //falta terminar esta func
-        
-
     }
 
 
