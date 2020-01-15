@@ -7,52 +7,72 @@ let Clientes = {
     "cliente_1": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y  
+        "posicion_y": Spawner.posicion_y ,
+        "estado": "libre",
+        "cant_recorridos": getCantRecorridos()
       },
     "cliente_2": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y    
+        "posicion_y": Spawner.posicion_y ,
+        "estado": "libre"  ,
+        "cant_recorridos": getCantRecorridos() 
     },
     "cliente_3": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y   
+        "posicion_y": Spawner.posicion_y  ,
+        "estado": "libre" ,
+        "cant_recorridos": getCantRecorridos()
      },
     "cliente_4": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y   
+        "posicion_y": Spawner.posicion_y  ,
+        "estado": "libre" ,
+        "cant_recorridos": getCantRecorridos()
      },
     "cliente_5": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y   
+        "posicion_y": Spawner.posicion_y  ,
+        "estado": "libre" ,
+        "cant_recorridos": getCantRecorridos()
      },
     "cliente_6": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y   
+        "posicion_y": Spawner.posicion_y  ,
+        "estado": "libre" ,
+        "cant_recorridos": getCantRecorridos()
      },
     "cliente_7": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y": Spawner.posicion_y   
+        "posicion_y": Spawner.posicion_y  ,
+        "estado": "libre" ,
+        "cant_recorridos": getCantRecorridos()
      },
     "cliente_8": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y":Spawner.posicion_y
+        "posicion_y":Spawner.posicion_y,
+        "estado": "libre",
+        "cant_recorridos": getCantRecorridos()
     },
     "cliente_9": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y":Spawner.posicion_y
+        "posicion_y":Spawner.posicion_y,
+        "estado": "libre",
+        "cant_recorridos": getCantRecorridos()
     },
     "cliente_10": {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
-        "posicion_y":Spawner.posicion_y
+        "posicion_y":Spawner.posicion_y,
+        "estado": "libre",
+        "cant_recorridos": getCantRecorridos()
     }
 
 
@@ -70,7 +90,7 @@ function dibujarCliente(cliente, context){
 
         case "cliente_1":
         context.drawImage(Clientes.cliente_1.imagen, Clientes.cliente_1.posicion_x, Clientes.cliente_1.posicion_y, Clientes.cliente_1.imagen.naturalWidth, Clientes.cliente_1.imagen.naturalHeight);
-
+        break;
     }
     
 }
@@ -78,9 +98,77 @@ function dibujarCliente(cliente, context){
 
 
 
+function recorrido(cliente) {
+
+    switch(cliente) {
+
+        case "cliente_1":
+            
+            if(Clientes.cliente_1.estado == "libre" && Clientes.cliente_1.posicion_x > Estanteria_doble.posicion_x + 100) {
+                Clientes.cliente_1.posicion_x -= 5;
+
+            }
+
+
+            if (Clientes.cliente_1.estado == "libre" && Clientes.cliente_1.posicion_x <= Estanteria_doble.posicion_x + 100) {
+                if(Clientes.cliente_1.posicion_y < Estanteria_doble.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y += 5;
+                    console.log("cliente_1 pos x: " + Clientes.cliente_1.posicion_x);
+                    console.log("cliente_1 pos y:" + Clientes.cliente_1.posicion_y);
+                }
+                
+
+            }
+
+            //aca jimmy
+            if (Clientes.cliente_1.posicion_x == 500 && Clientes.cliente_1.posicion_y == 360 && Clientes.cliente_1.estado == "libre") {
+                
+                Clientes.cliente_1.estado = "decidiendo";
+                console.log("decidiendo");
+
+
+            }
+        break;
+
+    }
 
 
 
+}
+
+
+  function  getCantRecorridos(){       
+        let maximos_recorridos = 4;
+        let minimos_recorridos = 1;
+        let cantidad = Math.floor(Math.random() * (maximos_recorridos - minimos_recorridos) + minimos_recorridos);    
+        return cantidad;
+    }
+
+
+
+    function tomarDecision() {
+        let maximos_recorridos = 3;
+        let minimos_recorridos = 1;
+        let cantidad = Math.floor(Math.random() * (maximos_recorridos - minimos_recorridos) + minimos_recorridos); 
+        let compra;
+        if(cantidad == 1) {
+
+            compra = true;
+
+        }
+
+        if (cantidad == 2 || cantidad == 3) {
+
+
+            compra = false;
+        }
+        
+        
+        return compra;
+
+
+    }
 
 
 
