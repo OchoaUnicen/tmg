@@ -10,6 +10,7 @@ let Clientes = {
         "posicion_y": Spawner.posicion_y ,
         "estado": "libre",
         "cant_recorridos": getCantRecorridos(),
+        "cooldown": 0,
         "productos" : {
 
                 "producto_1": "decidiendo",
@@ -148,16 +149,46 @@ function recorrido(cliente) {
 
                 console.log("decidiendo");
 
-                console.log("elegirProducto() // cliente_1.producto_1  "+ Clientes.cliente_1.producto_1);
+                console.log("elegirProducto() // cliente_1.producto_1  "+ Clientes.cliente_1.productos.producto_1);
 
 
 
             }
             //retomar aca
-            // if (Clientes.cliente_1.productos.producto_1 !== "decidiendo" && cooldown_cliente_1 == 0) {
-            //     console.log("entrop");
+            if (Clientes.cliente_1.productos.producto_1 !== "decidiendo" && Clientes.cliente_1.cooldown == 0) {
+                console.log("entrop");
 
-            // }
+                    if (Clientes.cliente_1.posicion_y > Ventanilla.posicion_y) {
+
+                        Clientes.cliente_1.posicion_y -= 5;
+
+                        // console.log("posicion x cliente : " + Clientes.cliente_1.posicion_x );
+                        // console.log("posicion y cliente : " + Clientes.cliente_1.posicion_y);
+
+                        
+                    }
+
+                    else if (Clientes.cliente_1.posicion_y < Ventanilla.posicion_y) {
+
+                        Clientes.cliente_1.posicion_y +=5;
+
+                    }
+
+
+                    if (Clientes.cliente_1.posicion_x > Ventanilla.posicion_x + 100) {
+
+                        Clientes.cliente_1.posicion_x -= 5;
+
+                    }
+
+                    else if (Clientes.cliente_1.posicion_x < Ventanilla.posicion_x + 100) {
+                        Clientes.cliente_1.posicion_x += 5;
+
+                    }
+
+
+
+            }
         break;
 
     }

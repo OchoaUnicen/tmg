@@ -86,7 +86,7 @@ function cargar_game_js() {
     //renderizacion - Todo dentro se realizarada 60 veces por segundo
     let cooldown = 0;
     let contador = 0;
-    let cooldown_cliente_1 = 0;
+    // let cooldown_cliente_1 = 0;
 
     // let Cliente_1 = new Cliente();
     function tiempo() {
@@ -144,18 +144,20 @@ function cargar_game_js() {
 
         if(Clientes.cliente_1.estado == "decidiendo"){
 
-            cooldown_cliente_1 == 40;
-
+            Clientes.cliente_1.cooldown = 400;
+            Clientes.cliente_1.estado = "espera";
 
         }
 
-        if (cooldown_cliente_1 > 0) {
-            cooldown_cliente_1 -= 10;
+        if (Clientes.cliente_1.cooldown > 0) {
+            Clientes.cliente_1.cooldown -= 10;
         }
         
         
-        if (cooldown_cliente_1 < 0) {
-            cooldown_cliente_1 = 0;
+        if (Clientes.cliente_1.cooldown <= 0) {
+            Clientes.cliente_1.cooldown = 0;
+
+            
         }
 
 
