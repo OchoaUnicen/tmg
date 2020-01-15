@@ -9,7 +9,13 @@ let Clientes = {
         "posicion_x": Spawner.posicion_x ,
         "posicion_y": Spawner.posicion_y ,
         "estado": "libre",
-        "cant_recorridos": getCantRecorridos()
+        "cant_recorridos": getCantRecorridos(),
+        "productos" : {
+
+                "producto_1": "decidiendo",
+                "producto_2": "decidiendo",
+                "producto_3": "decidiendo"
+        }
       },
     "cliente_2": {
         "imagen": imagen_cliente ,
@@ -125,10 +131,33 @@ function recorrido(cliente) {
             if (Clientes.cliente_1.posicion_x == 500 && Clientes.cliente_1.posicion_y == 360 && Clientes.cliente_1.estado == "libre") {
                 
                 Clientes.cliente_1.estado = "decidiendo";
+
+
+                if (elegirProducto() == 1){
+
+                    Clientes.cliente_1.productos.producto_1 = "spot_rojo";
+                }
+
+                if (elegirProducto() == 2){
+                    Clientes.cliente_1.productos.producto_1 = "spot_amarillo";
+
+                }
+
+                
+                
+
                 console.log("decidiendo");
+
+                console.log("elegirProducto() // cliente_1.producto_1  "+ Clientes.cliente_1.producto_1);
+
 
 
             }
+            //retomar aca
+            // if (Clientes.cliente_1.productos.producto_1 !== "decidiendo" && cooldown_cliente_1 == 0) {
+            //     console.log("entrop");
+
+            // }
         break;
 
     }
@@ -168,6 +197,35 @@ function recorrido(cliente) {
         return compra;
 
 
+    }
+
+    function elegirProducto() {
+
+        //el maximo tiene que ser 3
+        let maximo_productos = 2;
+        let minimo_productos = 1;
+        let eleccion_producto = Math.floor(Math.random() * (maximo_productos - minimo_productos) + minimo_productos); 
+
+
+        return eleccion_producto;
+
+
+        // if (eleccion_producto == 1) {
+        //     return "spot_rojo";
+
+        // }
+
+        // if (eleccion_producto == 2) {
+        //     return "spot_amarillo"
+
+        // }
+
+
+        // else {
+
+        //     return "eleccion_producto==3"
+        // }
+    //falta terminar esta func
     }
 
 
