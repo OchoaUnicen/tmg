@@ -53,7 +53,7 @@ function cargar_game_js() {
 
 //**********************************************************************************************/    
     canvas.onmousemove = function (e) {
-        console.log(getMousePos(canvas, e));
+        //   console.log(getMousePos(canvas, e));
     }
 //**********************************************************************************************/
 
@@ -61,8 +61,23 @@ function cargar_game_js() {
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
-        console.log("clicked");
-        console.log(mousePos.x + ',' + mousePos.y);         
+        //si hace click en el boton start
+        if (mousePos.x >= Interfaz.posicion_x && mousePos.x <= Interfaz.posicion_x + 190 && mousePos.y >= Interfaz.posicion_y && mousePos.y <= Interfaz.posicion_y + 79 ) {
+
+            Clientes.cliente_1.estado = "recorriendo";
+            Interfaz.estado = "started";
+
+            //console.log("start");
+
+
+        }
+
+
+
+
+
+        //console.log("clicked");
+        //console.log(mousePos.x + ',' + mousePos.y);         
     }, false);
     
     //Get Mouse Position
@@ -127,24 +142,27 @@ function cargar_game_js() {
         dibujarCraftingAzul(context);
 
 
+        if (Interfaz.estado == "started") {
+
+            dibujarCliente("cliente_1", context);
+            recorrido("cliente_1");
+    
+
+        }
 
 
         //crafter.js
         dibujarCrafter(context);
 
-
-
         //cliente.js
         // Cliente_1.dibujarCliente(context);
-        dibujarCliente("cliente_1", context);
-        recorrido("cliente_1");
-
+      
 
 
 
         if(Clientes.cliente_1.estado == "decidiendo"){
 
-            Clientes.cliente_1.cooldown = 400;
+            Clientes.cliente_1.cooldown = 1500;
             Clientes.cliente_1.estado = "espera";
 
         }
@@ -155,7 +173,9 @@ function cargar_game_js() {
         
         
         if (Clientes.cliente_1.cooldown <= 0) {
+
             Clientes.cliente_1.cooldown = 0;
+            
 
             
         }

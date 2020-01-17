@@ -8,12 +8,13 @@ let Clientes = {
         "imagen": imagen_cliente ,
         "posicion_x": Spawner.posicion_x ,
         "posicion_y": Spawner.posicion_y ,
-        "estado": "libre",
+        "estado": "off",
+        //estados : off, recorriendo, decidiendo, yendoventanilla, enventanilla, saliendo
         "cant_recorridos": getCantRecorridos(),
         "cooldown": 0,
         "productos" : {
 
-                "producto_1": "decidiendo",
+                "producto_1": elegirProducto(),
                 "producto_2": "decidiendo",
                 "producto_3": "decidiendo"
         }
@@ -111,84 +112,169 @@ function recorrido(cliente) {
 
         case "cliente_1":
             
-            if(Clientes.cliente_1.estado == "libre" && Clientes.cliente_1.posicion_x > Estanteria_doble.posicion_x + 100) {
-                Clientes.cliente_1.posicion_x -= 5;
+        //********************************************/
+            if (Clientes.cliente_1.estado == "recorriendo" &&
+             (Clientes.cliente_1.productos.producto_1 == "spot_rojo" || Clientes.cliente_1.productos.producto_1 == "spot_amarillo")){
 
-            }
 
 
-            if (Clientes.cliente_1.estado == "libre" && Clientes.cliente_1.posicion_x <= Estanteria_doble.posicion_x + 100) {
+                if (Clientes.cliente_1.posicion_x > Estanteria_doble.posicion_x + 100) {
+
+
+                    Clientes.cliente_1.posicion_x -= 5;
+                }
+
+                if (Clientes.cliente_1.posicion_x < Estanteria_doble.posicion_x + 100) {
+
+
+                    Clientes.cliente_1.posicion_x += 5;
+                }
+
+
                 if(Clientes.cliente_1.posicion_y < Estanteria_doble.posicion_y) {
 
                     Clientes.cliente_1.posicion_y += 5;
-                    console.log("cliente_1 pos x: " + Clientes.cliente_1.posicion_x);
-                    console.log("cliente_1 pos y:" + Clientes.cliente_1.posicion_y);
+                    // console.log("cliente_1 pos x: " + Clientes.cliente_1.posicion_x);
+                    // console.log("cliente_1 pos y:" + Clientes.cliente_1.posicion_y);
                 }
+
+                if (Clientes.cliente_1.posicion_y > Estanteria_doble.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y -= 5;
+
+                    
+                }
+
                 
 
+
+                
             }
 
+
+
+
+        //********************************************/
+
+            // if(Clientes.cliente_1.estado == "recorriendo" && Clientes.cliente_1.posicion_x > Estanteria_doble.posicion_x + 100) {
+            //     Clientes.cliente_1.posicion_x -= 5;
+            // }
+
+
+            // if (Clientes.cliente_1.estado == "recorriendo" && Clientes.cliente_1.posicion_x <= Estanteria_doble.posicion_x + 100) {
+            //     if(Clientes.cliente_1.posicion_y < Estanteria_doble.posicion_y) {
+
+            //         Clientes.cliente_1.posicion_y += 5;
+            //         console.log("cliente_1 pos x: " + Clientes.cliente_1.posicion_x);
+            //         console.log("cliente_1 pos y:" + Clientes.cliente_1.posicion_y);
+            //     }
+                
+
+            // }
+
             //aca jimmy
-            if (Clientes.cliente_1.posicion_x == 500 && Clientes.cliente_1.posicion_y == 360 && Clientes.cliente_1.estado == "libre") {
+            if (Clientes.cliente_1.posicion_x == 500 && Clientes.cliente_1.posicion_y == 360 && Clientes.cliente_1.estado == "recorriendo") {
                 
                 Clientes.cliente_1.estado = "decidiendo";
 
-
-                if (elegirProducto() == 1){
-
-                    Clientes.cliente_1.productos.producto_1 = "spot_rojo";
-                }
-
-                if (elegirProducto() == 2){
-                    Clientes.cliente_1.productos.producto_1 = "spot_amarillo";
-
-                }
-
-                
-                
-
-                console.log("decidiendo");
-
-                console.log("elegirProducto() // cliente_1.producto_1  "+ Clientes.cliente_1.productos.producto_1);
+                // if (elegirProducto() == 1){
+                //     Clientes.cliente_1.productos.producto_1 = "spot_rojo";
+                // }
+                // if (elegirProducto() == 2){
+                //     Clientes.cliente_1.productos.producto_1 = "spot_amarillo";
+                // }     
+                // console.log("decidiendo");
+                // console.log("elegirProducto() // cliente_1.productos.producto_1  "+ Clientes.cliente_1.productos.producto_1);
 
 
 
             }
-            //retomar aca
-            if (Clientes.cliente_1.productos.producto_1 !== "decidiendo" && Clientes.cliente_1.cooldown == 0) {
-                console.log("entrop");
+            
 
-                    if (Clientes.cliente_1.posicion_y > Ventanilla.posicion_y) {
+            //retomar aca --
+            if (Clientes.cliente_1.estado == "decidiendo") {
+                let desicion = tomarDecision();
+                if (desicion == true) {
 
-                        Clientes.cliente_1.posicion_y -= 5;
+                    //agregar a arreglo de productos a comprar
+                    if (Clientes.cliente_1.cant_recorridos > 0 && Clientes.cliente_1.cooldown == 0) {
 
-                        // console.log("posicion x cliente : " + Clientes.cliente_1.posicion_x );
-                        // console.log("posicion y cliente : " + Clientes.cliente_1.posicion_y);
-
-                        
-                    }
-
-                    else if (Clientes.cliente_1.posicion_y < Ventanilla.posicion_y) {
-
-                        Clientes.cliente_1.posicion_y +=5;
 
                     }
+                }
 
+                else if (desicion == false) {
+                    
 
-                    if (Clientes.cliente_1.posicion_x > Ventanilla.posicion_x + 100) {
-
-                        Clientes.cliente_1.posicion_x -= 5;
-
-                    }
-
-                    else if (Clientes.cliente_1.posicion_x < Ventanilla.posicion_x + 100) {
-                        Clientes.cliente_1.posicion_x += 5;
-
-                    }
-
+                }
 
 
             }
+
+
+            //falta parametro de cantidad de productos a comprar > 0
+            if (Clientes.cliente_1.cant_recorridos == 0 && Clientes.cliente_1.cooldown == 0) {
+
+                
+                if (Clientes.cliente_1.posicion_y > Ventanilla.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y -= 5;
+                    // console.log("posicion x cliente : " + Clientes.cliente_1.posicion_x );
+                    // console.log("posicion y cliente : " + Clientes.cliente_1.posicion_y);                        
+                }
+
+                else if (Clientes.cliente_1.posicion_y < Ventanilla.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y +=5;
+
+                }
+
+
+                if (Clientes.cliente_1.posicion_x > Ventanilla.posicion_x + 100) {
+
+                    Clientes.cliente_1.posicion_x -= 5;
+
+                }
+
+                else if (Clientes.cliente_1.posicion_x < Ventanilla.posicion_x + 100) {
+                    Clientes.cliente_1.posicion_x += 5;
+
+                }
+
+
+            }
+
+            // if (Clientes.cliente_1.productos.producto_1 !== "decidiendo" && Clientes.cliente_1.cooldown == 0) {
+            //     console.log("entrop");
+
+            //         if (Clientes.cliente_1.posicion_y > Ventanilla.posicion_y) {
+
+            //             Clientes.cliente_1.posicion_y -= 5;
+            //             // console.log("posicion x cliente : " + Clientes.cliente_1.posicion_x );
+            //             // console.log("posicion y cliente : " + Clientes.cliente_1.posicion_y);                        
+            //         }
+
+            //         else if (Clientes.cliente_1.posicion_y < Ventanilla.posicion_y) {
+
+            //             Clientes.cliente_1.posicion_y +=5;
+
+            //         }
+
+
+            //         if (Clientes.cliente_1.posicion_x > Ventanilla.posicion_x + 100) {
+
+            //             Clientes.cliente_1.posicion_x -= 5;
+
+            //         }
+
+            //         else if (Clientes.cliente_1.posicion_x < Ventanilla.posicion_x + 100) {
+            //             Clientes.cliente_1.posicion_x += 5;
+
+            //         }
+
+
+
+            // }
         break;
 
     }
@@ -233,29 +319,33 @@ function recorrido(cliente) {
     function elegirProducto() {
 
         //el maximo tiene que ser 3
-        let maximo_productos = 2;
+        let maximo_productos = 4;
         let minimo_productos = 1;
         let eleccion_producto = Math.floor(Math.random() * (maximo_productos - minimo_productos) + minimo_productos); 
 
 
-        return eleccion_producto;
+
+    if (eleccion_producto == 1) {
+                return "spot_rojo";
+
+            }
+
+            if (eleccion_producto == 2) {
+                return "spot_amarillo"
+
+            }
 
 
-        // if (eleccion_producto == 1) {
-        //     return "spot_rojo";
+            else {
 
-        // }
-
-        // if (eleccion_producto == 2) {
-        //     return "spot_amarillo"
-
-        // }
+                return "spot_azul"
+            }
 
 
-        // else {
+       // return eleccion_producto;
 
-        //     return "eleccion_producto==3"
-        // }
+
+        
     //falta terminar esta func
     }
 

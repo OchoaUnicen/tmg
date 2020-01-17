@@ -5,7 +5,8 @@ let Interfaz = {
 
     "posicion_x": 20,
     "posicion_y": 20,
-    "imagen":imagen_start
+    "imagen":imagen_start,
+    "estado": "esperando"
     
 }
 
@@ -19,11 +20,12 @@ function dibujarInterfaz(context) {
 
 }
 
-
+//seguir aca
 
 function iniciarPartida() {
 
-
+    Interfaz.estado = "started";
+    Clientes.cliente_1.estado = "recorriendo";
     
 
 }
