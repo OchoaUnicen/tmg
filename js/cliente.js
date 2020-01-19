@@ -112,6 +112,52 @@ function recorrido(cliente) {
 
         case "cliente_1":
             
+
+
+        if (Clientes.cliente_1. estado == "recorriendo" && 
+            (Clientes.cliente_1.productos.producto_1 == "spot_azul")) {
+
+                if (Clientes.cliente_1.posicion_x > Estanteria_simple.posicion_x + 100) {
+
+
+                    Clientes.cliente_1.posicion_x -= 5;
+                }
+
+                if (Clientes.cliente_1.posicion_x < Estanteria_simple.posicion_x + 100) {
+
+
+                    Clientes.cliente_1.posicion_x += 5;
+                }
+
+
+
+
+                if(Clientes.cliente_1.posicion_y < Estanteria_simple.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y += 5;
+                    // console.log("cliente_1 pos x: " + Clientes.cliente_1.posicion_x);
+                    // console.log("cliente_1 pos y:" + Clientes.cliente_1.posicion_y);
+                }
+
+                if (Clientes.cliente_1.posicion_y > Estanteria_simple.posicion_y) {
+
+                    Clientes.cliente_1.posicion_y -= 5;
+
+                    
+                }
+
+                
+
+
+
+
+
+
+
+
+
+        }
+
         //********************************************/
             if (Clientes.cliente_1.estado == "recorriendo" &&
              (Clientes.cliente_1.productos.producto_1 == "spot_rojo" || Clientes.cliente_1.productos.producto_1 == "spot_amarillo")){
